@@ -6,6 +6,8 @@ const websiteNameEl = document.getElementById("website-name");
 const websiteUrlEl = document.getElementById("website-url");
 const bookmarksContainer = document.getElementById("bookmarks-container");
 
+let bookmarks = [];
+
 // Show Modal, Focus on Input
 const showModal = () => {
   modal.classList.add("show-modal");
@@ -38,6 +40,21 @@ const validate = (nameValue, urlValue) => {
   return true;
 };
 
+// Fetch Bookmarks
+const fetchBookmarks = () => {
+  if (localStorage.getItem("bookmarks")) {
+    bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  } else {
+    bookmarks[
+      {
+        name: "Luke Lai",
+        url: "https://lukelai.tech",
+      }
+    ];
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  }
+};
+
 // Handle Data from Form
 const storeBookmark = (e) => {
   e.preventDefault();
@@ -49,7 +66,19 @@ const storeBookmark = (e) => {
   if (!validate(nameValue, urlValue)) {
     return false;
   }
+  const bookmark = {
+    name: nameValue,
+    url: urlValue,
+  };
+  bookmarks.push(bookmark);
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  fetchBookmarks();
+  bookmarkForm.reset();
+  websiteNameEl.focus();
 };
 
 // Event Listener
 bookmarkForm.addEventListener("submit", storeBookmark);
+
+// On Load
+fetchBookmarks();
