@@ -42,6 +42,8 @@ const validate = (nameValue, urlValue) => {
 
 // Build Bookmarks DOM
 const buildBookmarks = () => {
+  // Remove all booksmarks elements
+  bookmarksContainer.textContent = "";
   // Build items
   bookmarks.forEach((bookmark) => {
     const { name, url } = bookmark;
@@ -92,6 +94,18 @@ const fetchBookmarks = () => {
   buildBookmarks();
 };
 
+// Delete Bookmark
+const deleteBookmark = (url) => {
+  bookmarks.forEach((bookmark, index) => {
+    if (bookmark.url === url) {
+      bookmarks.splice(index, 1);
+    }
+  });
+  // Update Bookmarks array in local Storage
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  buildBookmarks();
+};
+
 // Handle Data from Form
 const storeBookmark = (e) => {
   e.preventDefault();
@@ -116,6 +130,6 @@ const storeBookmark = (e) => {
 
 // Event Listener
 bookmarkForm.addEventListener("submit", storeBookmark);
-
+// closeIcon.addEventListener("click", deleteBookmark);
 // On Load
 fetchBookmarks();
