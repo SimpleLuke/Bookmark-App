@@ -1,16 +1,13 @@
-
 This Bookmark App built with HTML, CSS, JavaScript.
 
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [Overview](#overview)
   - [Screenshot](#screenshot)
   - [Links](#links)
-- [My process](#my-process)
   - [Built with](#built-with)
 - [Author](#author)
-
-
 
 ## Overview
 
@@ -23,7 +20,6 @@ Users should be able to:
 
 <img src="./preview.png" width="400" />
 
-
 ### Links
 
 - Live Site: [Click here](https://simpleluke.github.io/Bookmark-App/)
@@ -33,7 +29,6 @@ Users should be able to:
 - HTML
 - CSS
 - JavaScript
-
 
 ## Author
 
